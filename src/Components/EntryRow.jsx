@@ -2,7 +2,7 @@
 export default function EntryRow({ entry }) {
     return(
       <tr>
-        <td>{entry.date.toDateString()}</td>
+        <td>{entry.date.toString()}</td>
         <td>{entry.activity}</td>
         <td>{entry.category}</td>
         <td>{entry.hours}</td>

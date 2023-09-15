@@ -1,13 +1,8 @@
-export default function EntryForm() {
-
-    function addEntry() {
-        //create the new entry
-        //save it to the data.js file
-    }
-
+/* eslint-disable react/prop-types */
+export default function EntryForm({addEntry}) {
     return (
         <form onSubmit={addEntry} className="entry-form">
-            <input type="text" placeholder="New Activity" id="activity"></input>
+            <input type="text" placeholder="New Activity" name="activity"></input>
             <label>
             <input type="radio" name="category"/>
             {' '}
@@ -19,14 +14,14 @@ export default function EntryForm() {
             Jiu-Jitsu
             </label>
             <label>
-            <input type="number"/>
+            <input type="number" name="hours"/>
             Number of Hours
             </label>
             <label>
-            <input type="date"></input>
+            <input type="date" name="date"></input>
             Date
             </label>
-            <input type="text" placeholder="Notes" id="notes"></input>
+            <input type="text" placeholder="Notes" name="notes"></input>
             <input type="submit" value="Submit" />
         </form>
     )
