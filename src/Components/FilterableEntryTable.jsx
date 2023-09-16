@@ -4,10 +4,16 @@ import EntryTable from "./EntryTable"
 import { useState, useEffect } from "react";
 
 export default function FilterableEntryTable() {
-    const [logEntries, setLogEntries] = useState([]);
+    // const [logEntries, setLogEntries] = useState([]);
+
+    const [logEntries, setLogEntries] = useState(() => {
+        const savedEntries = localStorage.getItem("logEntries");
+        const initialEntries = JSON.parse(savedEntries);
+        return initialEntries || [];
+      });
 
     useEffect(() => {
-        localStorage.getItem('logEntries', JSON.stringify(logEntries));
+        localStorage.setItem('logEntries', JSON.stringify(logEntries));
       }, [logEntries]);
 
     function addEntry(e) {
