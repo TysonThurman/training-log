@@ -2,6 +2,7 @@
 import EntryForm from "./EntryForm"
 import EntryTable from "./EntryTable"
 import { useState, useEffect } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function FilterableEntryTable() {
     // const [logEntries, setLogEntries] = useState([]);
@@ -17,7 +18,6 @@ export default function FilterableEntryTable() {
       }, [logEntries]);
 
     function addEntry(e) {
-        e.preventDefault();
         let activity = e.target.activity.value;
         let category = e.target.category.value;
         let hours = e.target.hours.value;
@@ -25,12 +25,12 @@ export default function FilterableEntryTable() {
         let notes = e.target.notes.value;
     
         let newEntry = {
-            id:1,
-            category:category,
+            id: uuidv4(),
+            category: category,
             date: date,
             activity: activity,
             hours: hours,
-            notes:notes
+            notes: notes
           }
     
         setLogEntries([
