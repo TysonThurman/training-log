@@ -4,12 +4,12 @@ export default function EntryForm({addEntry}) {
         <form onSubmit={addEntry} className="entry-form">
             <input type="text" placeholder="New Activity" name="activity"></input>
             <label>
-            <input type="radio" name="category"/>
+            <input type="radio" name="category" value="Strength and Conditioning"/>
             {' '}
             Strength and Conditioning
             </label>
             <label>
-            <input type="radio" name="category"/>
+            <input type="radio" name="category" value="Jiu-Jitsu"/>
             {' '}
             Jiu-Jitsu
             </label>

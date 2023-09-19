@@ -41,12 +41,8 @@ export default function FilterableEntryTable() {
         localStorage.setItem('logEntries', JSON.stringify(logEntries));
     }
 
-    function removeEntry(e) {
-      console.log(e)
-      // setLogEntries(logEntries.filter((_, i) => i !== key));
-      setLogEntries(logEntries.filter((entry) => entry.id !== e));
-
-      localStorage.setItem('logEntries', JSON.stringify(logEntries));
+    function removeEntry(key) {
+      setLogEntries(logEntries.filter((entry) => entry.id !== key));
     }
 
     return(

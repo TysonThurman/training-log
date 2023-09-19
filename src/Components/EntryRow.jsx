@@ -8,7 +8,7 @@ export default function EntryRow({ entry, removeEntry }) {
         <td>{entry.hours}</td>
         <td>{entry.notes}</td>
         <td><button className="edit-btn">Edit</button></td>
-        <td><button onClick={removeEntry} className="delete-btn">Delete</button></td>
+        <td><button onClick={() => removeEntry(entry.id)} className="delete-btn">Delete</button></td>
       </tr>
     )
   }
