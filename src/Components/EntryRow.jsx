@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-export default function EntryRow({ entry }) {
+export default function EntryRow({ entry, removeEntry }) {
     return(
       <tr>
         <td>{entry.date.toString()}</td>
@@ -7,6 +7,8 @@ export default function EntryRow({ entry }) {
         <td>{entry.category}</td>
         <td>{entry.hours}</td>
         <td>{entry.notes}</td>
+        <td><button className="edit-btn">Edit</button></td>
+        <td><button onClick={removeEntry} className="delete-btn">Delete</button></td>
       </tr>
     )
   }

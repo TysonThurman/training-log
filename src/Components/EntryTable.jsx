@@ -1,14 +1,16 @@
 /* eslint-disable react/prop-types */
 import EntryRow from "./EntryRow";
 
-export default function EntryTable({entries}){
+export default function EntryTable({entries, removeEntry}){
+
     const rows = []
   
     entries.forEach((entry) =>{
       rows.push(
         <EntryRow
           entry={entry}
-          key={entry.id} />
+          key={entry.id}
+          removeEntry={removeEntry} />
       );
     })
     return(
