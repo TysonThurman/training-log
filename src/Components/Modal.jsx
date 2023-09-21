@@ -7,7 +7,7 @@ export default function Modal({confirmDelete, setConfirmDelete, setDeleteClicked
             setConfirmation(true);
         }
 
-        else {
+        else if(e.target.id === "cancel-btn") {
             setConfirmation(false);
         }
 

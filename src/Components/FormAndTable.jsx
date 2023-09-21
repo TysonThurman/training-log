@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import Modal from "./Modal";
 
-export default function FilterableEntryTable() {
+export default function FormAndTable() {
 
     const [logEntries, setLogEntries] = useState(() => {
         const savedEntries = localStorage.getItem("logEntries");
