@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import EntryRow from "./EntryRow";
 
-export default function EntryTable({entries, removeEntry}){
+export default function EntryTable({logEntries, removeEntry}){
 
     const rows = []
   
-    entries.forEach((entry) =>{
+    logEntries.forEach((entry) =>{
       rows.push(
         <EntryRow
           entry={entry}

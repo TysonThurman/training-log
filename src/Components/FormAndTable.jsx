@@ -15,7 +15,6 @@ export default function FormAndTable() {
 
     const [deleteClicked, setDeleteClicked] = useState(false);
     const [confirmDelete, setConfirmDelete] = useState(false);
-    const [confirmation, setConfirmation] = useState(false);
 
 
     useEffect(() => {
@@ -46,17 +45,17 @@ export default function FormAndTable() {
         localStorage.setItem('logEntries', JSON.stringify(logEntries));
     }
 
+    //Need a way to pass the key to the Modal
     function removeEntry(key) {
       setDeleteClicked(true);
-      confirmation && setLogEntries(logEntries.filter((entry) => entry.id !== key));
-      console.log(`FilterableEntryTable Confirmation = ${confirmation}`);
+      confirmDelete && setLogEntries(logEntries.filter((entry) => entry.id !== key));
     }
 
     return(
       <div>
         <EntryForm addEntry={addEntry} />
-        <EntryTable entries={logEntries} removeEntry={removeEntry} />
-        {deleteClicked && <Modal confirmDelete={confirmDelete} setConfirmDelete={setConfirmDelete} setDeleteClicked={setDeleteClicked} setConfirmation={setConfirmation} confirmation={confirmation} />}
+        <EntryTable logEntries={logEntries} removeEntry={removeEntry} />
+      {deleteClicked && <Modal setConfirmDelete={setConfirmDelete} setDeleteClicked={setDeleteClicked} removeEntry={removeEntry} />}
       </div>
     )
   }

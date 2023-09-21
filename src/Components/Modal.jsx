@@ -1,30 +1,24 @@
-export default function Modal({confirmDelete, setConfirmDelete, setDeleteClicked, setConfirmation, confirmation}) {
+export default function Modal({setConfirmDelete, setDeleteClicked, removeEntry}) {
 
-    function processConfirmation(e){
-        // console.log(e.target.id);
-
-        if(e.target.id === "yes-btn") {
-            setConfirmation(true);
-        }
-
-        else if(e.target.id === "cancel-btn") {
-            setConfirmation(false);
-        }
-
-        setDeleteClicked(false);
-
-        //why is this coming up false after yes-btn is clicked?
-        console.log(`Modal Confirmation = ${confirmation}`);
+    //Need a way to pass the key to removeEntry from here
+    function confirmationYes(){
+        setConfirmDelete(() => true);
+        removeEntry();
+        setDeleteClicked(() => false);
     }
 
+    function confirmationCancel(){
+        setConfirmDelete(() => false);
+        setDeleteClicked(() => false);
+    }
 
   return (
     <>
     <div className='main-container'>
         <div className='modal-container'>
             <h4 className="deletion-text">Confirm Deletion?</h4>
-            <button id="yes-btn" onClick={(e)=> processConfirmation(e)}>Yes</button>
-            <button id="cancel-btn" onClick={(e)=> processConfirmation(e)}>Cancel</button>
+            <button onClick={()=> confirmationYes()}>Yes</button>
+            <button onClick={()=> confirmationCancel()}>Cancel</button>
         </div>
     </div>
     </>
