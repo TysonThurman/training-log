@@ -11,3 +11,7 @@ tr:nth-child(even) {
     flex-direction: column;
     padding: 2em;
 }
+
+.deletion-text {
+    color:red;
+}

@@ -3,15 +3,20 @@ import EntryForm from "./EntryForm"
 import EntryTable from "./EntryTable"
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
+import Modal from "./Modal";
 
 export default function FilterableEntryTable() {
-    // const [logEntries, setLogEntries] = useState([]);
 
     const [logEntries, setLogEntries] = useState(() => {
         const savedEntries = localStorage.getItem("logEntries");
         const initialEntries = JSON.parse(savedEntries);
         return initialEntries || [];
       });
+
+    const [deleteClicked, setDeleteClicked] = useState(false);
+    const [confirmDelete, setConfirmDelete] = useState(false);
+    const [confirmation, setConfirmation] = useState(false);
+
 
     useEffect(() => {
         localStorage.setItem('logEntries', JSON.stringify(logEntries));
@@ -42,13 +47,16 @@ export default function FilterableEntryTable() {
     }
 
     function removeEntry(key) {
-      setLogEntries(logEntries.filter((entry) => entry.id !== key));
+      setDeleteClicked(true);
+      confirmation && setLogEntries(logEntries.filter((entry) => entry.id !== key));
+      console.log(`FilterableEntryTable Confirmation = ${confirmation}`);
     }
 
     return(
       <div>
         <EntryForm addEntry={addEntry} />
         <EntryTable entries={logEntries} removeEntry={removeEntry} />
+        {deleteClicked && <Modal confirmDelete={confirmDelete} setConfirmDelete={setConfirmDelete} setDeleteClicked={setDeleteClicked} setConfirmation={setConfirmation} confirmation={confirmation} />}
       </div>
     )
   }
