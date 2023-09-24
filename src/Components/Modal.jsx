@@ -1,3 +1,11 @@
+import PropTypes from 'prop-types';
+
+Modal.propTypes ={
+    setConfirmDelete: PropTypes.any,
+    setDeleteClicked: PropTypes.any,
+    removeEntry: PropTypes.any
+}
+
 export default function Modal({setConfirmDelete, setDeleteClicked, removeEntry}) {
 
     //Need a way to pass the key to removeEntry from here

@@ -46,9 +46,9 @@ export default function FormAndTable() {
     }
 
     //Need a way to pass the key to the Modal
-    function removeEntry(key) {
+    function removeEntry(id) {
       setDeleteClicked(true);
-      confirmDelete && setLogEntries(logEntries.filter((entry) => entry.id !== key));
+      confirmDelete && setLogEntries(logEntries.filter((entry) => entry.id !== id));
     }
 
     return(
