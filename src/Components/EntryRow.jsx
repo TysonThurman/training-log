@@ -1,4 +1,10 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
+
+EntryRow.propTypes = {
+  entry: PropTypes.object,
+  removeEntry: PropTypes.func
+}
+
 export default function EntryRow({ entry, removeEntry }) {
     return(
       <tr>

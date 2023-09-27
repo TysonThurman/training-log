@@ -3,7 +3,6 @@ import EntryForm from "./EntryForm"
 import EntryTable from "./EntryTable"
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
-import Modal from "./Modal";
 
 export default function FormAndTable() {
 
@@ -14,8 +13,6 @@ export default function FormAndTable() {
       });
 
     const [deleteClicked, setDeleteClicked] = useState(false);
-    const [confirmDelete, setConfirmDelete] = useState(false);
-
 
     useEffect(() => {
         localStorage.setItem('logEntries', JSON.stringify(logEntries));
@@ -45,17 +42,20 @@ export default function FormAndTable() {
         localStorage.setItem('logEntries', JSON.stringify(logEntries));
     }
 
-    //Need a way to pass the key to the Modal
     function removeEntry(id) {
-      setDeleteClicked(true);
-      confirmDelete && setLogEntries(logEntries.filter((entry) => entry.id !== id));
+      let answer = prompt(`Type "yes" to confirm deletion.`);
+      if(!answer) {return 0;}
+      answer = answer.toLowerCase();
+      if (answer === 'yes')
+      {
+        setLogEntries(logEntries.filter((entry) => entry.id !== id));
+      }
     }
 
     return(
       <div>
         <EntryForm addEntry={addEntry} />
         <EntryTable logEntries={logEntries} removeEntry={removeEntry} />
-      {deleteClicked && <Modal setConfirmDelete={setConfirmDelete} setDeleteClicked={setDeleteClicked} removeEntry={removeEntry} />}
       </div>
     )
   }
